@@ -291,9 +291,10 @@ def test(model, prediction_dataloader, device):
 ###
 
 ###
-# The microservice will accept the model parameters, train the model and return the predicted values and accuracy.
+# The microservice will accept the model parameters (batch size, lr, eps and epochs), train the model and return the predicted values and accuracy.
 @app.route('/test_params', methods=['POST'])
 def test_params_post_request(): 
+  # Example: params = {"batch_size": 32, "lr": 5e-5, "eps": 1e-8, "epochs": 2}
   params = request.json
   train_dataloader, validation_dataloader = create_data_loader(params['batch_size'])
   prediction_dataloader = DataLoader(prediction_data, sampler=prediction_sampler, batch_size=params['batch_size'])
