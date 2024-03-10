@@ -3,11 +3,17 @@
 In this project pre-trainied model for Yes/No Question Answering will is deployed as a Docker microservice. The work of a microservice is parallelized by distributing the load into several threads via Load balancer.
 
 Task: Yes/No Question Answering.
-Input: parameters for a model's training (batch size, lr, eps and epochs). Example: params = {"batch_size": 32, "lr": 5e-5, "eps": 1e-8, "epochs": 2}
+
+Input: parameters for a model's training (batch size, lr, eps and epochs). Example: params = {"batch_size": 32, "lr": 5e-5, "eps": 1e-8, "epochs": 2}.
+
 Output: predictions and accuracy score. 
+
 Dataset: BoolQ. 
+
 Model: bert-base-multilingual-cased (https://huggingface.co/bert-base-multilingual-cased). 
+
 Experiment tracking: Neptune.ai.
+
 Serving: Docker-compose. 
 
 We are going to work with the BoolQ dataset from SuperGLUE. BoolQ is a question answering dataset for yes/no. In the task model training is performed on train.jsonl data and evaluation process is performed on val.jsonl. Both datasets include question, passage (question can be answered according to the passage) and label (1 (yes) or 0 (no). The data is preprocessed with BERT embeddings (tokenizer).
